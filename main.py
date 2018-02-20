@@ -29,8 +29,23 @@ class BaseHandler(webapp2.RequestHandler):
 
 class MainHandler(BaseHandler):
     def get(self):
-        return self.render_template("hello.html")
+        return self.render_template("index.html")
+
+class ProjectsHandler(BaseHandler):
+    def get(self):
+        return self.render_template("my-projects.html")
+
+class BlogHandler(BaseHandler):
+    def get(self):
+        return self.render_template("blog.html")
+
+class ContactHandler(BaseHandler):
+    def get(self):
+        return self.render_template("contact.html")
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
+    webapp2.Route('/my-projects', ProjectsHandler),
+    webapp2.Route('/blog', BlogHandler),
+    webapp2.Route('/contact', ContactHandler)
 ], debug=True)
